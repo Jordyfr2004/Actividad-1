@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Cliente</title>
+    <link rel="stylesheet" href="estilo_Registro.css">
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+            let esValido = true;
+
+            // Selección de todos los inputs
+            const campos = document.querySelectorAll('input, select'); //Encuentra todos los campos de entrada (como cajas de texto) y menús desplegables en el formulario.
+            campos.forEach(campo => {
+                const mensajeError = campo.nextElementSibling; // Encuentra el lugar donde se mostrará el mensaje de error para ese campo
+
+                // Si el campo está vacío, muestra un mensaje de error
+                if (campo.value === "" || campo.value === null) {
+                    mensajeError.textContent = "Este campo es obligatorio";
+                    esValido = false;
+                } else {
+                    mensajeError.textContent = "";//Si el campo tiene algo escrito, borra cualquier mensaje de error que pudiera haber estado allí.
+                }
+            });
+
+            // Si todos los campos son válidos, muestra el alert
+            if (esValido) {
+                alert("CLIENTE REGISTRADO");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="titulo">Registro de Cliente</div>
+        <form action="#" onsubmit="validarFormulario(event)">
+            <div class="grupo-formulario">
+                <label for="cedula">Cédula:</label>
+                <input type="text" id="cedula" placeholder="Ingrese Cédula">
+                <span class="error"></span>
+            </div>
+            <div class="fila-formulario">
+                <div class="grupo-formulario">
+                    <label for="nombres">Nombres:</label>
+                    <input type="text" id="nombres" placeholder="Ingrese Nombres">
+                    <span class="error"></span>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" placeholder="Ingrese Apellidos">
+                    <span class="error"></span>
+                </div>
+            </div>
+            <div class="fila-formulario">
+                <div class="grupo-formulario">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" placeholder="Ingrese Dirección">
+                    <span class="error"></span>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" placeholder="Ingrese Teléfono">
+                    <span class="error"></span>
+                </div>
+            </div>
+            <div class="fila-formulario">
+                <div class="grupo-formulario">
+                    <label for="email">E-Mail:</label>
+                    <input type="email" id="email" placeholder="Ingrese Correo Electrónico">
+                    <span class="error"></span>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="lugar">Ciudad:</label>
+                    <select id="lugar">
+                        <option value="" disabled selected>Seleccione ciudad</option>
+                        <option value="Quito">Quito</option>
+                        <option value="Guayaquil">Guayaquil</option>
+                        <option value="Cuenca">Cuenca</option>
+                        <option value="Santo Domingo">Santo Domingo</option>
+                        <option value="Machala">Machala</option>
+                        <option value="Manta">Manta</option>
+                        <option value="Manta">Jaramijó</option>
+                        <option value="Jaramijo">Machala</option>
+                        <option value="Portoviejo">Portoviejo</option>
+                        <option value="Ambato">Ambato</option>
+                        <option value="Riobamba">Riobamba</option>
+                        <option value="Ibarra">Ibarra</option>
+                        <!-- Se puede añadir más lugares aquí -->
+                    </select>
+                    <span class="error"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn-registrar">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
