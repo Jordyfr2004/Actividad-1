@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Define el conjunto de caracteres como UTF-8 para soportar múltiples idiomas y caracteres especiales. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la ventana de visualización para ser adaptable a diferentes tamaños de pantalla, esencial para el diseño responsivo. -->
+    <title>Operaciones con Números</title> <!-- Define el título de la página, que se muestra en la pestaña del navegador. -->
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Aplica la fuente Arial por defecto. */
+            display: flex; /* Utiliza flexbox para alinear el contenido del cuerpo. */
+            justify-content: center; /* Centra el contenido horizontalmente. */
+            align-items: center; /* Centra el contenido verticalmente. */
+            height: 100vh; /* Establece la altura del cuerpo como el 100% de la altura de la ventana. */
+            margin: 0; /* Elimina los márgenes del cuerpo. */
+        }
+        #contenedor {
+            text-align: center; /* Centra el texto dentro del contenedor. */
+            max-width: 600px; /* Limita el ancho máximo del contenedor a 600 píxeles. */
+            margin: auto; /* Asegura que el contenedor esté centrado automáticamente. */
+        }
+        h1 {
+            font-size: 3em; /* Aumenta el tamaño de la fuente del título h1. */
+        }
+        p {
+            font-size: 1.5em; /* Ajusta el tamaño de la fuente de los párrafos. */
+        }
+        input {
+            padding: 10px; /* Agrega espacio interior en los campos de entrada. */
+            font-size: 1.2em; /* Establece un tamaño de fuente más grande para los inputs. */
+            margin: 10px; /* Agrega espacio alrededor de los inputs. */
+            width: 200px; /* Define un ancho de 200 píxeles para los inputs. */
+        }
+        button {
+            padding: 15px 30px; /* Agrega espacio interior al botón. */
+            font-size: 1.5em; /* Ajusta el tamaño de la fuente del botón. */
+            cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón. */
+            margin-top: 20px; /* Agrega espacio encima del botón. */
+        }
+        #resultados {
+            margin-top: 30px; /* Agrega espacio encima del contenedor de resultados. */
+            font-size: 1.2em; /* Ajusta el tamaño de la fuente para los resultados. */
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <h1>Operaciones por cada Iteración</h1> <!-- Título de la página, indicando que se realizarán operaciones por iteraciones. -->
+        
+        <p>Ingresa dos números para realizar las operaciones:</p> <!-- Instrucciones para el usuario. -->
+        
+        <input type="number" id="numero1" placeholder="Número 1"> <!-- Campo de entrada para el primer número, con un marcador de posición. -->
+        <input type="number" id="numero2" placeholder="Número 2"> <!-- Campo de entrada para el segundo número. -->
+        
+        <br> <!-- Salto de línea para separar los elementos. -->
+        <button onclick="realizarOperaciones()">Realizar Operaciones</button> <!-- Botón que ejecuta la función "realizarOperaciones" al hacer clic. -->
+
+        <div id="resultados"></div> <!-- Contenedor donde se mostrarán los resultados de las operaciones. -->
+    </div>
+
+    <script>
+        function realizarOperaciones() {
+            // Obtener los valores de los inputs
+            let num1 = parseFloat(document.getElementById('numero1').value); // Obtiene el valor del primer número ingresado por el usuario.
+            let num2 = parseFloat(document.getElementById('numero2').value); // Obtiene el valor del segundo número ingresado.
+
+            // Verifica si los valores ingresados no son números
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('resultados').innerHTML = "<p style='color: red;'>Por favor ingrese dos números válidos.</p>"; // Muestra un mensaje de error si uno de los valores no es un número.
+                return; // Sale de la función si los números no son válidos.
+            }
+            
+            let resultados = ""; // Variable que almacenará los resultados de las operaciones.
+
+            // Itera 5 veces para realizar diferentes operaciones
+            for (let i = 1; i <= 5; i++) {
+                let resultado; // Variable para almacenar el resultado de cada operación.
+                
+                switch(i) {
+                    case 1: // Caso 1: Realiza la suma.
+                        resultado = num1 + num2;
+                        resultados += `<p>Iteración ${i}: Suma (${num1} + ${num2}) = ${resultado}</p>`;
+                        break;
+                    case 2: // Caso 2: Realiza la resta.
+                        resultado = num1 - num2;
+                        resultados += `<p>Iteración ${i}: Resta (${num1} - ${num2}) = ${resultado}</p>`;
+                        break;
+                    case 3: // Caso 3: Realiza la multiplicación.
+                        resultado = num1 * num2;
+                        resultados += `<p>Iteración ${i}: Multiplicación (${num1} * ${num2}) = ${resultado}</p>`;
+                        break;
+                    case 4: // Caso 4: Realiza la división, verificando si num2 no es cero.
+                        if (num2 !== 0) {
+                            resultado = num1 / num2;
+                            resultados += `<p>Iteración ${i}: División (${num1} / ${num2}) = ${resultado}</p>`;
+                        } else {
+                            resultados += `<p>Iteración ${i}: División por cero no permitida.</p>`;
+                        }
+                        break;
+                    case 5: // Caso 5: Realiza el módulo (resto de la división), verificando si num2 no es cero.
+                        if (num2 !== 0) {
+                            resultado = num1 % num2;
+                            resultados += `<p>Iteración ${i}: Módulo (${num1} % ${num2}) = ${resultado}</p>`;
+                        } else {
+                            resultados += `<p>Iteración ${i}: Módulo por cero no permitido.</p>`;
+                        }
+                        break;
+                }
+            }
+            
+            // Inserta los resultados generados dentro del div con id 'resultados'
+            document.getElementById('resultados').innerHTML = resultados;
+        }
+    </script>
+</body>
+</html>
+
+
