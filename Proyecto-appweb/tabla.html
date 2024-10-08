@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="estilo5.css">
+</head>
+<body>
+
+    <h2>Información de Equipos</h2>
+
+    <div class="stats-container">
+        <div class="stat">
+            <p>Total de Equipos:</p>
+            <p id="total-equipos">0</p>
+        </div>
+        <div class="stat">
+            <p>Total de Equipos en Uso:</p>
+            <p id="total-uso">0</p>
+        </div>
+        <div class="stat">
+            <p>Total de Equipos en Mal Estado:</p>
+            <p id="total-mal-estado">0</p>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <h3>Búsqueda Avanzada</h3>
+        <select id="search-option">
+            <option value="marca">Buscar por Marca</option>
+            <option value="numeroSerie">Buscar por Número de Serie</option>
+            <option value="estado">Buscar por Estado</option>
+            <option value="lugar">Buscar por Lugar</option>
+            <option value="responsable">Buscar por Responsable</option>
+        </select>
+        <input type="text" id="search-value" placeholder="Valor a buscar">
+        <button onclick="filterTable()">Buscar</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Número de Serie</th>
+                <th>Fecha de Adquisición</th>
+                <th>Especificaciones</th>
+                <th>Fecha de Mantenimiento</th>
+                <th>Descripción del Mantenimiento</th>
+                <th>Estado</th>
+                <th>Lugar</th>
+                <th>Responsable a Cargo</th>
+            </tr>
+        </thead>
+        <tbody id="inventario-body">
+            <!-- Celdas llenadas dinámicamente -->
+        </tbody>
+    </table>
+
+    <script src="scritp3.js"></script>
+
+</body>
+</html>

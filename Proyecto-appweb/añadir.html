@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="estilo1.css">
+        
+</head>
+<body>
+
+    <h2>Información de Equipos</h2>
+
+    <div class="stats-container">
+        <div class="stat">
+            <p>Total de Equipos:</p>
+            <p id="total-equipos">0</p>
+        </div>
+        <div class="stat">
+            <p>Total de Equipos en Uso:</p>
+            <p id="total-uso">0</p>
+        </div>
+        <div class="stat">
+            <p>Total de Equipos en Mal Estado:</p>
+            <p id="total-mal-estado">0</p>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Número de Serie</th>
+                <th>Fecha de Adquisición</th>
+                <th>Especificaciones</th>
+                <th>Fecha de Mantenimiento</th>
+                <th>Descripción del Mantenimiento</th>
+                <th>Estado</th>
+                <th>Lugar</th>
+                <th>Responsable a Cargo</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="inventario-body">
+            <!-- Celdas llenadas dinámicamente -->
+        </tbody>
+    </table>
+
+    <!-- Fondo oscuro para el modal -->
+    <div id="modal-overlay"></div>
+
+    <!-- Modal para editar -->
+    <div id="edit-modal">
+        <h3>Editar Equipo</h3>
+        <form id="edit-form">
+            <div>
+                <label for="edit-marca">Marca:</label>
+                <input type="text" id="edit-marca" placeholder="Ej: HP, DELL">
+                <div class="error-message" id="marca-error"></div>
+            </div>
+            <div>
+                <label for="edit-numero-serie">Número de Serie:</label>
+                <input type="text" id="edit-numero-serie" placeholder="Ingrese el número de serie">
+                <div class="error-message" id="numero-serie-error"></div>
+            </div>
+            <div>
+                <label for="edit-fecha-adquisicion">Fecha de Adquisición:</label>
+                <input type="date" id="edit-fecha-adquisicion">
+                <div class="error-message" id="fecha-adquisicion-error"></div>
+            </div>
+            <div>
+                <label for="edit-especificaciones">Especificaciones:</label>
+                <textarea id="edit-especificaciones" placeholder="Describa las especificaciones del equipo"></textarea>
+                <div class="error-message" id="especificaciones-error"></div>
+            </div>
+            <div>
+                <label for="edit-fecha-mantenimiento">Fecha de Mantenimiento:</label>
+                <input type="date" id="edit-fecha-mantenimiento">
+                <div class="error-message" id="fecha-mantenimiento-error"></div>
+            </div>
+            <div>
+                <label for="edit-descripcion-mantenimiento">Descripción del Mantenimiento:</label>
+                <textarea id="edit-descripcion-mantenimiento" placeholder="Describa el mantenimiento realizado"></textarea>
+                <div class="error-message" id="descripcion-mantenimiento-error"></div>
+            </div>
+            <div>
+                <label for="edit-estado">Estado:</label>
+                <select id="edit-estado">
+                    <option value="En Uso">En Uso</option>
+                    <option value="En Almacenamiento">En Almacenamiento</option>
+                    <option value="En Reparación">En Reparación</option>
+                    <option value="Dañado">Dañado</option>
+                </select>
+                <div class="error-message" id="estado-error"></div>
+            </div>
+            <div>
+                <label for="edit-lugar">Lugar:</label>
+                <input type="text" id="edit-lugar" placeholder="Ej: Oficina, Almacén">
+                <div class="error-message" id="lugar-error"></div>
+            </div>
+            <div class="full-width">
+                <label for="edit-responsable">Responsable a Cargo:</label>
+                <input type="text" id="edit-responsable" placeholder="Ingrese el nombre del responsable">
+                <div class="error-message" id="responsable-error"></div>
+            </div>
+            <div class="full-width">
+                <button type="button" onclick="saveChanges()">Guardar Cambios</button>
+                <button type="button" id="close-btn" onclick="closeModal()">Cerrar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal de confirmación de eliminación -->
+    <div id="confirm-delete-modal">
+        <h3>Confirmar Eliminación</h3>
+        <p>¿Estás seguro de que quieres eliminar este equipo?</p>
+        <button type="button" onclick="confirmDelete()">Eliminar</button>
+        <button type="button" onclick="closeConfirmDeleteModal()">Cancelar</button>
+    </div>
+
+    <script src="script1.js"></script>
+</body>
+</html>

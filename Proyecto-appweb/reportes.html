@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Reporte - Sistema de Control de Inventario</title>
+    <link rel="stylesheet" href="estilo4.css">
+    
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Control de Inventario de Equipos Informáticos</h1>
+        <img src="Imagen/LOGO-ULEAM.png" alt="Logo">
+    </header>
+
+    <div class="container">
+        <h1>Generar Reporte</h1>
+
+        <div class="report-form">
+            <label for="report-type">Seleccione el tipo de reporte:</label>
+            <select id="report-type">
+                <option value="reporte-general">Reporte General de Inventario</option>
+                <option value="equipos-en-uso">Equipos en Uso</option>
+                <option value="equipos-danados">Equipos Dañados</option>
+                <option value="equipos-mantenimiento">Equipos en Mantenimiento</option>
+            </select>
+
+            <button onclick="generateReport()">Generar Reporte</button>
+        </div>
+    </div>
+
+    <script>
+        function generateReport() {
+            const reportType = document.getElementById('report-type').value;
+            alert(`Generando ${reportType}...`);
+        }
+    </script>
+
+</body>
+</html>
